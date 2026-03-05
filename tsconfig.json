@@ -17,19 +17,15 @@
 
     "baseUrl": ".",
     "paths": {
-      "@config/*": ["./src/config/*"],
-      "@constants/*": ["./src/constants/*"],
-      "@controllers/*": ["./src/controllers/*"],
-      "@interfaces/*": ["./src/interfaces/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@models/*": ["./src/models/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@services/*": ["./src/services/*"],
-      "@templates/*": ["./src/templates/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@validations/*": ["./src/validations/*"]
+      "@controllers/*": ["src/controllers/*"],
+      "@middlewares/*": ["src/middlewares/*"],
+      "@models/*": ["src/models/*"],
+      "@routes/*": ["src/routes/*"],
+      "@services/*": ["src/services/*"],
+      "@config/*": ["src/config/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["src/**/*", "dev-data"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
