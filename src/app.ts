@@ -1,11 +1,11 @@
-import express from "express";
+import express from 'express'
 
-const app = express();
+const app = express()
 
-app.use(express.json());
+app.use(express.json())
 
-app.get("/health", (req, res) => {
-  res.json({ status: "OK" });
-});
+app.get('/health', (req, res) => {
+  res.json({ status: 'OK' })
+})
 
-export default app;
+export default app
