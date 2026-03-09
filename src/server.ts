@@ -1,10 +1,11 @@
 import { connectDatabase } from '@config/db'
+import logger from '@config/logger'
 
 import app from './app'
 
 const PORT = 5000
 
 app.listen(PORT, async () => {
-  console.log(`Server running on port ${PORT}`)
+  logger.info(`Server running on port ${PORT}`)
   await connectDatabase()
 })
