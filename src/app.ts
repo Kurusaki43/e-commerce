@@ -1,13 +1,14 @@
 import express from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
-import mongoSanitize from 'express-mongo-sanitize'
 import cookieParser from 'cookie-parser'
 import compression from 'compression'
 import rateLimit from 'express-rate-limit'
 import hpp from 'hpp'
 import { httpLogger } from '@middlewares/httpLogger'
 import env from '@config/env'
+import { errorHandler } from '@middlewares/errorHandler'
+import { notFound } from '@middlewares/notFound'
 
 const app = express()
 app.set('trust proxy', 1)
@@ -57,7 +58,12 @@ Sanitization
 ----------------
 */
 
-app.use(mongoSanitize())
+// app.use(
+//   mongoSanitize({
+//     replaceWith: '_',
+//     allowDots: true,
+//   }),
+// )
 
 app.use(hpp())
 
@@ -92,7 +98,10 @@ Health check
 */
 
 app.get('/health', (_req, res) => {
-  res.status(200).json({ status: 'OK' })
+  res.json({ status: 'OK' })
 })
+
+app.use(notFound)
+app.use(errorHandler)
 
 export default app
