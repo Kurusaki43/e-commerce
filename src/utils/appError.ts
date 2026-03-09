@@ -1,4 +1,4 @@
-import { type HttpStatusCode } from 'src/constants/httpStatusCode'
+import { type HttpStatusCode } from '@constants/httpStatusCode'
 
 export class AppError extends Error {
   public status: string
