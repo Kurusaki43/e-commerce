@@ -6,6 +6,6 @@ import app from './app'
 const PORT = 5000
 
 app.listen(PORT, async () => {
-  logger.info(`Server running on port ${PORT}`)
+  logger.info({ port: PORT }, `Server running`)
   await connectDatabase()
 })

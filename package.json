@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx nodemon",
     "build": "rimraf ./dist && tsc && tsc-alias",
-    "start": "node dist/server.js",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -48,6 +48,7 @@
     "@types/express": "^5.0.6",
     "@types/morgan": "^1.9.10",
     "@types/node": "^25.3.3",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import-x": "^4.16.1",
