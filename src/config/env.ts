@@ -1,4 +1,4 @@
-import { cleanEnv, str, port } from 'envalid'
+import { cleanEnv, str, port, num } from 'envalid'
 import dotenv from 'dotenv'
 
 dotenv.config({ path: '.env' })
@@ -8,6 +8,8 @@ const env = cleanEnv(process.env, {
   PORT: port({ default: 5000 }),
   MONGO_URI: str(),
   LOG_LEVEL: str({ choices: ['error', 'warn', 'info', 'http', 'verbose', 'debug', 'silly'] }),
+  CLIENT_URL: str(),
+  RATE_LIMIT_MAX: num({ default: 100 }),
 })
 
 export default env
