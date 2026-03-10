@@ -1,24 +1,18 @@
+import env from '@config/env'
 import { STATUS_CODES } from '@constants/httpStatusCode'
-import { AppError } from '@utils/appError'
+import type { AppError } from '@utils/appError'
+import { sendErrorDev, sendErrorProd } from '@utils/errorHelpers'
 import type { Request, Response, NextFunction } from 'express'
 
-export const errorHandler = (
-  err: Error | AppError,
-  _req: Request,
-  res: Response,
-  _next: NextFunction,
-) => {
-  let statusCode = STATUS_CODES.INTERNAL_SERVER_ERROR
-  let message = 'Internal Server Error'
+export const errorHandler = (err: AppError, _req: Request, res: Response, _next: NextFunction) => {
+  const error = { ...err }
+  error.message = err.message
+  error.status = err.status || 'error'
+  error.statusCode = err.statusCode || STATUS_CODES.INTERNAL_SERVER_ERROR
 
-  if (err instanceof AppError) {
-    statusCode = err.statusCode
-    message = err.message
+  if (env.isDev) {
+    sendErrorDev(res, error)
+  } else {
+    sendErrorProd(res, error)
   }
-
-  res.status(statusCode).json({
-    status: 'error',
-    message,
-    ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
-  })
 }
