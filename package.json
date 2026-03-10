@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "npx nodemon",
-    "build": "rimraf ./dist && tsc && tsc-alias",
+    "build": "rm -rf dist && tsc && tsc-alias",
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
