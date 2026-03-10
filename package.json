@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "[ -d .git ] && husky || true"
   },
   "lint-staged": {
     "*.{ts,js}": [
