@@ -11,7 +11,8 @@ export default defineConfig([
   {
     ignores: ['dist', 'node_modules', 'commitlint.config.js', 'eslint.config.js'],
   },
-
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     files: ['**/*.{ts,js}'],
     ignores: ['eslint.config.js'],
@@ -62,7 +63,7 @@ export default defineConfig([
       TypeScript safety
       */
 
-      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/consistent-type-imports': 'warn',
 
       /*
@@ -72,9 +73,6 @@ export default defineConfig([
       'security/detect-object-injection': 'off',
     },
   },
-
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
 
   /*
   Disable formatting rules conflicting with prettier

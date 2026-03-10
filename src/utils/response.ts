@@ -2,9 +2,9 @@ import type { Response } from 'express'
 
 export const successResponse = (
   res: Response,
-  data: unknown,
-  message = 'Success',
   statusCode = 200,
+  message = 'Success',
+  data?: unknown,
 ) => {
   return res.status(statusCode).json({
     status: 'success',
